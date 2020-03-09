@@ -83,8 +83,11 @@ Identifier = [_a-zA-Z][_a-zA-Z0-9]*
 %%
 /* end of the line*/
 <YYINITIAL>{
-/*white space*/
-
+/*
+&nbsp => is for white spaces that html tag recognize
+&esmp => is for tab  that html tag recognize
+we should not ignore them beacuse error happen
+*/
 " " { stringBuilder.setLength(0); stringBuilder.append("&nbsp;"); return new Symbol(Symbol.WHITE_SPACE); }
 "\t" { stringBuilder.setLength(0); stringBuilder.append("&emsp;"); return new Symbol(Symbol.WHITE_SPACE); }
 
@@ -175,20 +178,15 @@ Identifier = [_a-zA-Z][_a-zA-Z0-9]*
 "]" {return Operators(Symbol.CLOSE_BRAKET,SymbolType.OPERATOR.getColor());}
 
 
-
+/*because we want to recognize characters we should not have same rule befor this command*/
 {CharacterLiteral} {return Operators(Symbol.CHAR,SymbolType.CHARACTERS.getColor());}
-
 {SpecialCharacterLiteral} {return ItalicScan(Symbol.CHAR,SymbolType.CHARACTERS.getColor());}
 
-
+/*because we want to recognize strings we should not have " operator befor this command*/
 \" { stringBuilder.setLength(0); stringBuilder.append("<span style=\"color: ").append(SymbolType.STRING.getColor()).append("\">&quot;"); yybegin(STRING); }
 
 {IntegerLiteral} {return Operators(Symbol.INTEGER,SymbolType.INTEGER.getColor());}
 {FloatingPointLiteral} {return ItalicScan(Symbol.REAL_ITALIC_NUMBER,SymbolType.REAL_ITALIC_NUMBER.getColor());}
-
-
-
-
 {Identifier} {return Operators(Symbol.IDENTIFIER,SymbolType.IDENTIFIER.getColor());}
 
 
@@ -218,10 +216,11 @@ Identifier = [_a-zA-Z][_a-zA-Z0-9]*
 [^\n\r\"\\]+ { stringBuilder.append( yytext() ); }
 " " { stringBuilder.append("&nbsp;"); }
 "\t" { stringBuilder.append("&emsp;"); }
+      /*I make the special character color red and italic to find the diffrent clearly*/
  {StringSpecialCharacters} { stringBuilder.append("<span style=\"color: ").append(SymbolType.SPECIAL_ITALIC_CHARS.getColor()).append("\"><i>").append(yytext()).append("</i></span>"); }
 
 
 
-}//end
+}
 
 
