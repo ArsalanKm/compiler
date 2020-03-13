@@ -530,6 +530,7 @@ public class Scanner {
       stringBuilder.append("<br/>");
 return new Symbol(Symbol.WHITE_SPACE);
   }
+  // these function is for our reserved words like int,double and etc
   public  Symbol ReservedWord(int code){
       stringBuilder.setLength(0);
       stringBuilder.append("<span style=\" color:"+SymbolType.RESERVED.getColor()+"\""+ "<b>"+yytext()+"</b></span>");
@@ -540,6 +541,7 @@ return new Symbol(Symbol.WHITE_SPACE);
       stringBuilder.append("<span style=\" color:"+color+"\""+ "<b>"+yytext()+"</b></span>");
       return  new Symbol(code);
   }
+  //this function just for special charachters in string and Real numbers
   public Symbol ItalicScan(int code,String color){
        stringBuilder.setLength(0);
             stringBuilder.append("<span style=\" color:"+color+"\""+ "<b><i>"+yytext()+"</i></b></span>");

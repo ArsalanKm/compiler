@@ -1,4 +1,7 @@
-import org.omg.CORBA.INTERNAL;
+/**
+ * Enum class for finding the type of the entring symbol and our myscanner() return the object of this class
+ * written by arsalankarimzd
+ */
 
 public enum SymbolType {
     /*RESERVED SHOULD BE BOLD AND BLUE*/
@@ -10,7 +13,7 @@ public enum SymbolType {
     REAL_ITALIC_NUMBER("orange"),
     STRING("green"),
     CHARACTERS("green"),
-    /* ITALIC AND GREEN*/
+    /* ITALIC AND GREEN I make red for better understanding*/
     SPECIAL_ITALIC_CHARS("red"),
     COMMENTS("gray"),
     OPERATOR("black");
@@ -30,6 +33,7 @@ public enum SymbolType {
         this.color = color;
     }
 
+    //    this function we use to find the symbol of entered value
     public static SymbolType getTypeByCode(int code) {
         switch (code) {
             case 1:

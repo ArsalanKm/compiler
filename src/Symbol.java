@@ -2,7 +2,7 @@ public class Symbol {
 
     public static final int WHITE_SPACE = 1;
     public static final int COMMENT = 2;
-
+    /* Start of Reserved words*/
     public static final int INT = 3;
     public static final int SHORT = 4;
     public static final int LONG = 5;
@@ -40,8 +40,9 @@ public class Symbol {
     public static final int FUNCTION = 37;
     public static final int PRINTLN = 38;
     public static final int FALSE = 39;
-//OPERATORS
+    /*End Of Reserved words*/
 
+    /*Start Of Operators*/
     public static final int EQUAL = 40;
     public static final int DOUBLE_EQUAL = 41;
     public static final int NOT_EQUAL = 42;
@@ -53,50 +54,42 @@ public class Symbol {
     public static final int COMMA = 48;
     public static final int COLON = 49;
     public static final int SEMICOLON = 50;
-
     public static final int PLUS = 53;
     public static final int DOUBLE_PLUS = 54;
     public static final int MINUS = 55;
     public static final int DOUBLE_MINUS = 56;
-
     public static final int CHARACTER_LITERAL = 57;
     public static final int STRING_LITERAL = 58;
-
     public static final int OPENT_PARANTHESE = 59;
     public static final int CLOSE_PARANTHESE = 60;
     public static final int OPEN_BRACE = 51;
     public static final int CLOSE_BRACE = 52;
-
-
     public static final int MOD = 61;
     public static final int DIVISION = 62;
     public static final int DIVISION_EQUAL = 63;
     public static final int STAR_EQUAL = 64;
     public static final int MINUS_EQUAL = 65;
     public static final int PLUS_EQUAL = 66;
-
     public static final int TILDA = 67;
-
     public static final int LOGICAL_AND = 68;
     public static final int LOGICAL_OR = 69;
     public static final int LOGICAL_NOT = 70;
-
     public static final int ARITHMETIC_AND = 71;
     public static final int ARITHMETIC_OR = 72;
     public static final int ARITHMETIC_NOT = 73;
     public static final int ARITHMETIC_XOR = 74;
-
     public static final int STAR = 75;
     public static final int OPEN_BRAKET = 76;
     public static final int CLOSE_BRAKET = 77;
+    /*End Of Operators*/
+
+    /* for special values*/
     public static final int IDENTIFIER = 78;
     public static final int INTEGER = 79;
     public static final int REAL_ITALIC_NUMBER = 80;
     public static final int INPUT_STRING = 81;
     public static final int CHARACTERS = 82;
     public static final int SPECIAL_ITALIC_CHARS = 83;
-
-
 
 
     private int code;

@@ -7,13 +7,15 @@
 %column
 %public
 
-//Scanner function definitions
+//Here I change the scanner function name and make it return Symbol each time
 %function myscanner
 %type Symbol
 
+// We declare Three state these state are diffrent from INITIAL State
 %state SIMPLECOMMENT
 %state MULTIPLELINECOMMENT
 %state STRING
+
 
 
 
@@ -25,6 +27,7 @@
       stringBuilder.append("<br/>");
 return new Symbol(Symbol.WHITE_SPACE);
   }
+  // these function is for our reserved words like int,double and etc
   public  Symbol ReservedWord(int code){
       stringBuilder.setLength(0);
       stringBuilder.append("<span style=\" color:"+SymbolType.RESERVED.getColor()+"\""+ "<b>"+yytext()+"</b></span>");
@@ -35,6 +38,7 @@ return new Symbol(Symbol.WHITE_SPACE);
       stringBuilder.append("<span style=\" color:"+color+"\""+ "<b>"+yytext()+"</b></span>");
       return  new Symbol(code);
   }
+  //this function just for special charachters in string and Real numbers
   public Symbol ItalicScan(int code,String color){
        stringBuilder.setLength(0);
             stringBuilder.append("<span style=\" color:"+color+"\""+ "<b><i>"+yytext()+"</i></b></span>");
@@ -43,45 +47,46 @@ return new Symbol(Symbol.WHITE_SPACE);
 
 %}
 
-
+/* Commands */
 LineTerminator = \r|\n|\r\n
 InputCharacter = [^\r\n]
+// \f stands for form feed to start a new page
 WhiteSpace = {LineTerminator} | [ \t\f]
-/* comments */
-Comment = {TraditionalComment} | {EndOfLineComment} }
 TraditionalComment = "/*" [^*] ~"*/" | "/*" "*"+ "/"
-// Comment can be the last line of the file, without line terminator.
+// Comment can be the last line of the file, without line terminator ? is condtion maker for regex .
 EndOfLineComment = "//" {InputCharacter}* {LineTerminator}?
 EndOfLineCommentData=[^\n\r\t ]+
 TraditionalCommentData="*"+[^\/] | [^\*\n\r\t ]+
+Comment = {TraditionalComment} | {EndOfLineComment} }
+
 /* End Comments*/
 
 
-CharacterLiteral = \'[^\\]\'
-SpecialCharacterLiteral = \'\\[abfnrtv\\\'\"]\'
+CharacterData = \'[^\\]\'
+SpecialCharacterData = \'\\[abfnrtv\\\'\"]\'
 
-StringConent = [^\n\r\"\\ \t]+
+StringData = [^\n\r\"\\ \t]+
 StringSpecialCharacters = \\[abfnrtv\\\'\"]
 
-UnsignedLongIntegerLiteral = u?l?l? | U?L?L?
-DecimalIntegerLiteral = [1-9]\d*
-OctalIntegerLiteral = 0[0-7]*
-HexaDecimalIntegerLiteral = 0x[\da-fA-F]+
-IntegerLiteral = ({DecimalIntegerLiteral} | {OctalIntegerLiteral} | {HexaDecimalIntegerLiteral}){UnsignedLongIntegerLiteral}?
+UnsignedLongInteger = u?l?l? | U?L?L?
+DecimalInteger = [1-9]\d*
+OctalInteger = 0[0-7]*
+HexaDecimal = 0x[\da-fA-F]+
+Integer = ({DecimalInteger} | {OctalInteger} | {HexaDecimal}){UnsignedLongInteger}?
 
-DecimalFloatingPointSicentific = ((E | e\+)\d+)?([fF] | {UnsignedLongIntegerLiteral})?
+DecimalFloatingPointSicentific = ((E | e\+)\d+)?([fF] | {UnsignedLongInteger})?
+//Double finishes with F or f
 HexaDecimalFloatingPointScientific = p[\+-]?\d+[fF]?
 DecimalFloatingPointLiteral = \d+\.\d+{DecimalFloatingPointSicentific}? | \d+[fF]
-HexaDecimalFloatingPointLiteral = {HexaDecimalIntegerLiteral}(\.[\da-fA-F]+)?{HexaDecimalFloatingPointScientific}
+HexaDecimalFloatingPointLiteral = {HexaDecimal}(\.[\da-fA-F]+)?{HexaDecimalFloatingPointScientific}
 FloatingPointLiteral = {DecimalFloatingPointLiteral} | {HexaDecimalFloatingPointLiteral}
 
+
+// Identifier like variable name or function name this should be our last priority
 Identifier = [_a-zA-Z][_a-zA-Z0-9]*
 
 
-
-
 %%
-/* end of the line*/
 <YYINITIAL>{
 /*
 &nbsp => is for white spaces that html tag recognize
@@ -153,8 +158,12 @@ we should not ignore them beacuse error happen
 "++" {return Operators(Symbol.DOUBLE_PLUS,SymbolType.OPERATOR.getColor());}
 "-" {return Operators(Symbol.MINUS,SymbolType.OPERATOR.getColor());}
 "--" {return Operators(Symbol.DOUBLE_MINUS,SymbolType.OPERATOR.getColor());}
+/*** Warning* **
+** we should not put one coat and double coat here because we want to scan chars and strings
 //"'" {return Operators(Symbol.CHARACTER_LITERAL,SymbolType.OPERATOR.getColor());}
 //"\"" {return Operators(Symbol.STRING_LITERAL,SymbolType.OPERATOR.getColor());}
+
+***  End Warnig ***/
 "(" {return Operators(Symbol.OPENT_PARANTHESE,SymbolType.OPERATOR.getColor());}
 ")" {return Operators(Symbol.CLOSE_PARANTHESE,SymbolType.OPERATOR.getColor());}
 "{" {return Operators(Symbol.OPEN_BRACE,SymbolType.OPERATOR.getColor());}
@@ -179,13 +188,13 @@ we should not ignore them beacuse error happen
 
 
 /*because we want to recognize characters we should not have same rule befor this command*/
-{CharacterLiteral} {return Operators(Symbol.CHAR,SymbolType.CHARACTERS.getColor());}
-{SpecialCharacterLiteral} {return ItalicScan(Symbol.CHAR,SymbolType.CHARACTERS.getColor());}
+{CharacterData} {return Operators(Symbol.CHAR,SymbolType.CHARACTERS.getColor());}
+{SpecialCharacterData} {return ItalicScan(Symbol.CHAR,SymbolType.CHARACTERS.getColor());}
 
 /*because we want to recognize strings we should not have " operator befor this command*/
 \" { stringBuilder.setLength(0); stringBuilder.append("<span style=\"color: ").append(SymbolType.STRING.getColor()).append("\">&quot;"); yybegin(STRING); }
 
-{IntegerLiteral} {return Operators(Symbol.INTEGER,SymbolType.INTEGER.getColor());}
+{Integer} {return Operators(Symbol.INTEGER,SymbolType.INTEGER.getColor());}
 {FloatingPointLiteral} {return ItalicScan(Symbol.REAL_ITALIC_NUMBER,SymbolType.REAL_ITALIC_NUMBER.getColor());}
 {Identifier} {return Operators(Symbol.IDENTIFIER,SymbolType.IDENTIFIER.getColor());}
 
