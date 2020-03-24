@@ -93,6 +93,7 @@ Identifier = [_a-zA-Z][_a-zA-Z0-9]*
 &esmp => is for tab  that html tag recognize
 we should not ignore them beacuse error happen
 */
+
 " " { stringBuilder.setLength(0); stringBuilder.append("&nbsp;"); return new Symbol(Symbol.WHITE_SPACE); }
 "\t" { stringBuilder.setLength(0); stringBuilder.append("&emsp;"); return new Symbol(Symbol.WHITE_SPACE); }
 

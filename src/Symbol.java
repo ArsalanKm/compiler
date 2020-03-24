@@ -83,7 +83,7 @@ public class Symbol {
     public static final int CLOSE_BRAKET = 77;
     /*End Of Operators*/
 
-    /* for special values*/
+    /* for special*/
     public static final int IDENTIFIER = 78;
     public static final int INTEGER = 79;
     public static final int REAL_ITALIC_NUMBER = 80;

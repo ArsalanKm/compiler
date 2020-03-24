@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a1c6dca-6bfd-4467-a89d-b7df1aabcf65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/compiler/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/compiler/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/compiler/Scanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/compiler/Symbol.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/compiler/Symbol.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/compiler/SymbolType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/compiler/SymbolType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/compiler/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/compiler/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scanned.html" beforeDir="false" afterPath="$PROJECT_DIR$/scanned.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scanner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Symbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Symbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SymbolType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SymbolType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scanner.flex" beforeDir="false" afterPath="$PROJECT_DIR$/src/scanner.flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.txt" afterDir="false" />
     </list>
@@ -108,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583744330394</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="the code is readable and comments added to code just remember you put the italic chars color red not green finished just Dfa remain">
+      <created>1584111965325</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1584111965325</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,6 +136,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commments added to scanner .flex" />
-    <option name="LAST_COMMIT_MESSAGE" value="commments added to scanner .flex" />
+    <MESSAGE value="the code is readable and comments added to code just remember you put the italic chars color red not green finished just Dfa remain" />
+    <option name="LAST_COMMIT_MESSAGE" value="the code is readable and comments added to code just remember you put the italic chars color red not green finished just Dfa remain" />
   </component>
 </project>

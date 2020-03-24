@@ -1,8 +1,29 @@
-/*comment
-* hello
-*
+//hello     ali alavi                   taghi taghi
+
+//vali avali
+
+/**/
+
+/*ca we now describe our program?
+*what abount now?
+*******
+hello ? *??*(***              ;LKj;;LAKSDJFL;ASDJFKJ;L
 */
-int main(){
-int a;
-String string;
+
+int main()//do you read?
+{
+
+///ali taghi
+///vali    nabi
+
+
+        //salam
+
+"   hello \n and this is \r\t %f    ali alavi";
+    char c = '\n';
+    char c1 =            'a';
+    char c3 = '\r';
+    unsigned int main = "hello "++;
+    printf("hello world here    is the character %c \n \r and \t",c);
+    return;
 }
